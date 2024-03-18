@@ -1,7 +1,8 @@
 import cherrypy
 import os
 import json
-import fromfile as ff
+#import fromfile as ff
+import froms3 as ff
 #import fromdynamo as ff
 
 cherrypy.config.update({'server.socket_port': 80})
