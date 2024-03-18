@@ -4,7 +4,7 @@ import json
 import fromfile as ff
 #import fromdynamo as ff
 
-cherrypy.config.update({'server.socket_port': 8080})
+cherrypy.config.update({'server.socket_port': 80})
 cherrypy.config.update({'server.socket_host':'0.0.0.0'})
 conf = { '/':
   { 'tools.staticdir.on' : True,
