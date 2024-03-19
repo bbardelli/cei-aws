@@ -2,7 +2,7 @@ import boto3
 import json
 
 # Create a DynamoDB client
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', region_name='eu-south-2')
 table = dynamodb.Table('my_exam_table')
 
 # Print the resulting item
