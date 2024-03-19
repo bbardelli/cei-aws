@@ -45,7 +45,7 @@ def parse_exam(content):
         while not "Correct Answer:" in lines[line_number] and line_number < len(lines) - 1:
             line_number += 1
         correct_answer = question_dict['correct_answer'] = lines[line_number].replace("    Correct Answer: ","").rstrip()
-        print(question_dict)
+        #print(question_dict)
         for x in correct_answer:
             question_dict['answers'][x]["is_correct"] = True
         #print (lines[line_number])
