@@ -20,9 +20,9 @@ def get_time_with_param(func,param):
     return end - start
 
 print("Time to get exam list from file: ", get_time(ffile.get_exam_list))
-print("Time to get exam list from file: ", get_time(fss.get_exam_list))
-print("Time to get exam list from file: ", get_time(fdynamo.get_exam_list))
+print("Time to get exam list from S3: ", get_time(fss.get_exam_list))
+print("Time to get exam list from dynamo: ", get_time(fdynamo.get_exam_list))
 
 print("Time to get exam from file: ", get_time_with_param(ffile.get_exam,"exam20.md"))
-print("Time to get exam from file: ", get_time_with_param(fss.get_exam,"exam20.md"))
-print("Time to get exam from file: ", get_time_with_param(fdynamo.get_exam,"exam20.md"))
+print("Time to get exam from s3: ", get_time_with_param(fss.get_exam,"exam20.md"))
+print("Time to get exam from dynamo: ", get_time_with_param(fdynamo.get_exam,"exam20.md"))
