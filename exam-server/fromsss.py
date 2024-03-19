@@ -1,10 +1,15 @@
 import boto3
+import json
 
 BUCKET_NAME = 'bruno-cei-test'
-s3 = boto3.client('s3')
+AWS_REGION = 'eu-south-2'
+s3 = boto3.client('s3', region_name=AWS_REGION)
 
 def get_exam_list():
     s3_response = s3.list_objects_v2(Bucket=BUCKET_NAME, Prefix='exams/')
+    exam_list = [content['Key'].replace('exams/', '') for content in s3_response['Contents']]
+    exam_list = [x for x in exam_list if x != ""]
+    return json.dumps(exam_list)
 
 def get_exam(filename):
     s3_response = s3.get_object(Bucket=BUCKET_NAME, Key='exams/' + filename)
