@@ -8,7 +8,7 @@ aws_region = os.environ.get('BUCKET_AWS_REGION', 'eu-south-2')
 s3 = boto3.client('s3', region_name=aws_region)
 
 def get_exam_list():
-    print("getting exam list" + bucket_name)
+    print("getting exam list from " + aws_region + " bucket " + bucket_name )
     s3_response = s3.list_objects_v2(Bucket=bucket_name, Prefix='exams/')
     exam_list = [content['Key'].replace('exams/', '') for content in s3_response['Contents']]
     exam_list = [x for x in exam_list if x != ""]
