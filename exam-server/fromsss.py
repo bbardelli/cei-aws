@@ -3,18 +3,18 @@ import boto3
 import json
 
 
-BUCKET_NAME = os.environ.get('BUCKET_NAME', 'exam-test')
-AWS_REGION = os.environ.get('BUCKET_AWS_REGION', 'eu-south-2')
-s3 = boto3.client('s3', region_name=AWS_REGION)
+bucket_name = os.environ.get('BUCKET_NAME', 'exam-test')
+aws_region = os.environ.get('BUCKET_AWS_REGION', 'eu-south-2')
+s3 = boto3.client('s3', region_name=aws_region)
 
 def get_exam_list():
-    s3_response = s3.list_objects_v2(Bucket=BUCKET_NAME, Prefix='exams/')
+    s3_response = s3.list_objects_v2(Bucket=bucket_name, Prefix='exams/')
     exam_list = [content['Key'].replace('exams/', '') for content in s3_response['Contents']]
     exam_list = [x for x in exam_list if x != ""]
     return json.dumps(exam_list)
 
 def get_exam(filename):
-    s3_response = s3.get_object(Bucket=BUCKET_NAME, Key='exams/' + filename)
+    s3_response = s3.get_object(Bucket=bucket_name, Key='exams/' + filename)
     return parse_exam(s3_response['Body'].read().decode('utf-8'))
 
 
