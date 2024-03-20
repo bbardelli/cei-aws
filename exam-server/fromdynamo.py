@@ -1,9 +1,12 @@
+import os
 import boto3
 import json
 
+AWS_REGION = os.environ.get('DYNAMO_AWS_REGION', 'eu-south-2')
+DYNAMO_TABLE = os.environ.get('DYNAMO_TABLE', 'my_exam_table')
 # Create a DynamoDB client
-dynamodb = boto3.resource('dynamodb', region_name='eu-south-2')
-table = dynamodb.Table('my_exam_table')
+dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
+table = dynamodb.Table(DYNAMO_TABLE)
 
 # Print the resulting item
 def get_exam_list():

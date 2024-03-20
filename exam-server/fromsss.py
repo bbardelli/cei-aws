@@ -1,8 +1,10 @@
+import os
 import boto3
 import json
 
-BUCKET_NAME = 'bruno-cei-test'
-AWS_REGION = 'eu-south-2'
+
+BUCKET_NAME = os.environ.get('BUCKET_NAME', 'exam-test')
+AWS_REGION = os.environ.get('BUCKET_AWS_REGION', 'eu-south-2')
 s3 = boto3.client('s3', region_name=AWS_REGION)
 
 def get_exam_list():

@@ -15,6 +15,10 @@ EXPOSE 80
 
 # Define environment variable
 ENV NAME ExamServer
+ENV BUCKET_NAME exam-test
+ENV BUCKET_REGION eu-south-2
+ENV DYNAMO_REGION eu-south-2
+ENV DYNAMO_TABLE my_exam_table
 
 # Run app.py when the container launches
 CMD ["python", "app.py"]
