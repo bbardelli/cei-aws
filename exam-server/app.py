@@ -1,9 +1,18 @@
 import cherrypy
 import os
 import json
-#import fromfile as ff
-#import fromsss as ff
-import fromdynamo as ff
+import fromfile
+import fromsss
+import fromdynamo
+
+database_type = os.environ.get('DATABASE_TYPE', 'file')
+if database_type == 'file':
+    ff = fromfile
+elif database_type == 's3':
+    ff = fromsss
+elif database_type == 'dynamo':
+    ff = fromdynamo
+
 
 cherrypy.config.update({'server.socket_port': 80})
 cherrypy.config.update({'server.socket_host':'0.0.0.0'})
