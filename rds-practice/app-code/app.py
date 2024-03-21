@@ -4,8 +4,8 @@ import json
 
 #get rds host from environment variable
 rds_host = os.environ.get('RDS_HOST')
-rds_user = os.environ.get('RDS_USER', 'iam_user')
-rds_db = os.environ.get('RDS_DATABASE')
+rds_user = os.environ.get('RDS_USER', 'admin')
+rds_db = os.environ.get('RDS_DATABASE', 'dummy')
 rds_password = os.environ.get('RDS_PASSWORD')
 
 #get all records from the authors table
