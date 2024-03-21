@@ -8,10 +8,13 @@ import fromdynamo
 database_type = os.environ.get('DATABASE_TYPE', 'file')
 if database_type == 'file':
     ff = fromfile
+    print("Using file")
 elif database_type == 's3':
     ff = fromsss
+    print("Using s3")
 elif database_type == 'dynamo':
     ff = fromdynamo
+    print("Using dynamo")
 
 
 cherrypy.config.update({'server.socket_port': 80})
