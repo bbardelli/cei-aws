@@ -20,6 +20,6 @@ def get_authors():
     rows = cursor.fetchall()
     cursor.close()
     connection.close()
-    return json.dumps(rows)
+    return rows
 
-get_authors()
+print(get_authors())
