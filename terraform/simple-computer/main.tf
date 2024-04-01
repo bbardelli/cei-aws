@@ -1,6 +1,11 @@
 provider "aws" {
   region = "eu-south-2"
 }
+backend "s3" {
+  bucket = "bucket-cei-test"
+  key    = "simple-computer/terraform.tfstate"
+  region = "eu-south-2"
+}
 
 #get latest ami id for amazon linux 2023
 data "aws_ami" "amazon_linux_2023" {
