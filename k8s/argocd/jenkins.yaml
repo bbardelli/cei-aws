@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jenkins
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.jenkins.io
+    targetRevision: 5.1.5
+    chart: jenkinsci
+    helm:
+      valuesObject:
+        controller:
+          serviceType: NodePort
+          nodePort: 30180
+          admin:
+            username: admin
+            password: admin
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: devops
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+    
