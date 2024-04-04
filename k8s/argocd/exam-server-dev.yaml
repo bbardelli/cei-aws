@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: exam-test-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/bbardelli/cei-aws.git'
+    path: k8s/apps/exam-test-dev
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: exam-test-dev
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - PrunePropagationPolicy=foreground
+      - CreateNamespace=true

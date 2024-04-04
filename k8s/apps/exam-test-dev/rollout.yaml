@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: exam-test
+spec:
+  replicas: 3
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: exam-test
+  template:
+    metadata:
+      labels:
+        app: exam-test
+    spec:
+      imagePullSecrets:
+      - name: docker-registry
+      initContainers:
+      - name: init
+        env:
+        - name: DATABASE_TYPE
+          value: "redis"
+        - name: REDIS_HOST
+          value: "redis-exam"
+        image: 885903886121.dkr.ecr.eu-south-2.amazonaws.com/cei-exam-test-cb:latest
+        imagePullPolicy: Always
+        command: ['python', 'export-to-redis.py']
+      containers:
+      - name: exam-test
+        env:
+        - name: DATABASE_TYPE
+          value: "redis"
+        - name: REDIS_HOST
+          value: "redis-exam"
+        image: 885903886121.dkr.ecr.eu-south-2.amazonaws.com/cei-exam-test-cb:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {duration: 10}
+      - setWeight: 40
+      - pause: {duration: 10}
+      - setWeight: 60
+      - pause: {duration: 10}
+      - setWeight: 80
+      - pause: {duration: 10}
