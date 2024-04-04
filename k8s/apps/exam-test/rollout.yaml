@@ -20,7 +20,7 @@ spec:
         env:
         - name: DATABASE_TYPE
           value: "redis"
-        - name: DATABASE_HOST
+        - name: REDIS_HOST
           value: "redis-exam"
         image: 885903886121.dkr.ecr.eu-south-2.amazonaws.com/cei-exam-test-cb:3
         imagePullPolicy: Always
