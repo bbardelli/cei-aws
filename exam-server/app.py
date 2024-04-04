@@ -4,6 +4,7 @@ import json
 import fromfile
 import fromsss
 import fromdynamo
+import fromredis
 
 database_type = os.environ.get('DATABASE_TYPE', 'file')
 if database_type == 'file':
@@ -15,6 +16,9 @@ elif database_type == 's3':
 elif database_type == 'dynamo':
     ff = fromdynamo
     print("Using dynamo")
+elif database_type == 'redis':
+    ff = fromredis
+    print("Using redis")
 
 
 cherrypy.config.update({'server.socket_port': 80})

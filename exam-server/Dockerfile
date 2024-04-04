@@ -10,7 +10,7 @@ COPY . /usr/src/app
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 8080 available to the world outside this container
+# Make port 80 available to the world outside this container
 EXPOSE 80
 
 # Define environment variable
@@ -19,6 +19,7 @@ ENV BUCKET_NAME exam-test
 ENV BUCKET_REGION eu-south-2
 ENV DYNAMO_REGION eu-south-2
 ENV DYNAMO_TABLE my_exam_table
+ENV DATABASE_TYPE file
 
 # Run app.py when the container launches
 CMD ["python", "app.py"]

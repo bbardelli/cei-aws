@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rollout-demo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'git@github.com:bbardelli/cei-aws.git'
+    path: k8s/apps/rollout-demo
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: rollout-demo
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - PrunePropagationPolicy=foreground
+      - CreateNamespace=true
