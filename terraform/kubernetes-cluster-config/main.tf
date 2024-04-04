@@ -55,3 +55,27 @@ resource "kubernetes_secret" "ecr_credentials" {
 
 
 }
+resource "kubernetes_namespace" "exam-test" {
+  metadata {
+    name = "exam-test"
+  }
+}
+resource "kubernetes_secret" "ecr_credentials_exam-test" {
+  metadata {
+    name      = "docker-registry"
+    namespace = "exam-test"
+  }
+  type = "kubernetes.io/dockerconfigjson"
+
+  data = {
+    ".dockerconfigjson" = jsonencode({
+      auths = {
+        "${data.aws_ecr_authorization_token.token.proxy_endpoint}" = {
+          auth = "${data.aws_ecr_authorization_token.token.authorization_token}"
+        }
+      }
+    })
+  }
+
+
+}

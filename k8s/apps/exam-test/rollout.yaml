@@ -13,6 +13,8 @@ spec:
       labels:
         app: exam-test
     spec:
+      imagePullSecrets:
+      - name: docker-registry
       containers:
       - name: exam-test
         env:
