@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'git@github.com:bbardelli/cei-aws.git'
+    repoURL: 'https://github.com/bbardelli/cei-aws.git'
     path: k8s/apps/exam-test
     targetRevision: HEAD
   destination:
