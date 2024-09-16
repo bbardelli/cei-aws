@@ -64,12 +64,5 @@ resource "aws_s3_bucket_object" "html_files" {
   content_type = "text/html"
 }
 
-resource "aws_s3_bucket_object" "jsonfile" {
-  bucket       = aws_s3_bucket.website_bucket.bucket
-  key          = "jsontest.json"
-  source       = "../../lamdba-s3-events/jstontest.json"
-  content_type = "application/json"
-
-}
 data "aws_region" "current" {}
 
