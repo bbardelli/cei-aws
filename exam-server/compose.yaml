@@ -5,9 +5,10 @@ services:
     ports:
       - 6379:6379
   my_app:
-    image: cei-exam-test:2
+    image: cei-exam-test
     environment:
       - DATABASE_TYPE=redis
+      - REDIS_HOST=redis
     ports:
       - 80:80
     depends_on:
