@@ -3,8 +3,7 @@ kind: Rollout
 metadata:
   name: exam-test
   annotations:
-    argocd-image-updater.argoproj.io/image-list: |
-      - image: 885903886121.dkr.ecr.eu-south-2.amazonaws.com/cei-exam-test:latest
+    argocd-image-updater.argoproj.io/image-list: 885903886121.dkr.ecr.eu-south-2.amazonaws.com/cei-exam-test:latest
 spec:
   replicas: 3
   revisionHistoryLimit: 1
