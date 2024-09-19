@@ -1,6 +1,9 @@
 podTemplate(
     serviceAccount: "jenkins",
     imagePullSecrets: ['docker-registry'],
+    volumes: [
+                secretVolume(mountPath: "/tmp/dr", secretName: 'docker-registry'),
+            ]
     containers: [
         containerTemplate(name: 'podman', 
             image: '885903886121.dkr.ecr.eu-south-2.amazonaws.com/jenkins-agent', 
@@ -8,9 +11,6 @@ podTemplate(
             privileged: true ,
             command: 'sleep', 
             args: '99d'
-            volumes: [
-                secretVolume(mountPath: "/tmp/dr", secretName: 'docker-registry'),
-            ]
             )
     ]) {
 
