@@ -22,7 +22,7 @@ spec:
           value: "redis"
         - name: REDIS_HOST
           value: "redis-exam"
-        image: 885903886121.dkr.ecr.eu-south-2.amazonaws.com/cei-exam-test-cb:6
+        image: 885903886121.dkr.ecr.eu-south-2.amazonaws.com/cei-exam-test:6
         imagePullPolicy: Always
         command: ['python', 'export-to-redis.py']
       containers:
@@ -32,7 +32,7 @@ spec:
           value: "redis"
         - name: REDIS_HOST
           value: "redis-exam"
-        image: 885903886121.dkr.ecr.eu-south-2.amazonaws.com/cei-exam-test-cb:6
+        image: 885903886121.dkr.ecr.eu-south-2.amazonaws.com/cei-exam-test:6
         imagePullPolicy: Always
         ports:
         - name: http

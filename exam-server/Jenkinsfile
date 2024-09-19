@@ -16,7 +16,7 @@ podTemplate(
 
       node(POD_LABEL) {
         container('podman'){  
-          env.IMAGE_NAME='exam-server'
+          env.IMAGE_NAME='cei-exam-test'
           env.IMAGE_REPO='885903886121.dkr.ecr.eu-south-2.amazonaws.com'
           stage ('Checkout'){
             git url: 'https://github.com/bbardelli/cei-aws.git', branch: 'main'
