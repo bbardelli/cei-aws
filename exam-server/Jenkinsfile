@@ -2,7 +2,16 @@ podTemplate(
     serviceAccount: "jenkins",
     imagePullSecrets: ['docker-registry'],
     containers: [
-      containerTemplate(name: 'podman', image: '885903886121.dkr.ecr.eu-south-2.amazonaws.com/jenkins-agent', alwaysPullImage: true, privileged: true ,command: 'sleep', args: '99d')
+        containerTemplate(name: 'podman', 
+            image: '885903886121.dkr.ecr.eu-south-2.amazonaws.com/jenkins-agent', 
+            alwaysPullImage: true, 
+            privileged: true ,
+            command: 'sleep', 
+            args: '99d'
+            volumes: [
+                secretVolume(mountPath: "/tmp/dr", secretName: 'docker-registry'),
+            ]
+            )
     ]) {
 
       node(POD_LABEL) {
@@ -17,8 +26,8 @@ podTemplate(
           }
           stage('Push docker image') {
             withCredentials([usernameColonPassword(credentialsId: 'registry', variable: 'USERPASS')]){
-              sh 'podman push $IMAGE_REPO/$IMAGE_NAME:$BUILD_NUMBER --tls-verify=false --creds=$USERPASS'
-              sh 'podman push $IMAGE_REPO/$IMAGE_NAME:latest --tls-verify=false --creds=$USERPASS'
+              sh 'podman push $IMAGE_REPO/$IMAGE_NAME:$BUILD_NUMBER --authfile=/tmp/dr/.dockerconfigjson'
+              sh 'podman push $IMAGE_REPO/$IMAGE_NAME:latest --authfile=/tmp/dr/.dockerconfigjson'
             }
           }
         }
