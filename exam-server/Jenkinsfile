@@ -1,38 +1,26 @@
-pipeline {
-    agent any
-    options {
-        skipStagesAfterUnstable()
-    }
-    stages {
-         stage('Clone repository') { 
-            steps { 
-                script{
-                checkout scm
-                }
-            }
-        }
+podTemplate(
+    serviceAccount: "jenkins",
+    containers: [
+      containerTemplate(name: 'podman', image: '885903886121.dkr.ecr.eu-south-2.amazonaws.com/jenkins-agent', alwaysPullImage: true, privileged: true ,command: 'sleep', args: '99d')
+    ]) {
 
-        stage('Build') { 
-            steps { 
-                script{
-                 app = docker.build("cei-exam-test-jenkins")
-                }
+      node(POD_LABEL) {
+        container('podman'){  
+          env.IMAGE_NAME='exam-server'
+          env.IMAGE_REPO='885903886121.dkr.ecr.eu-south-2.amazonaws.com'
+          stage ('Checkout'){
+            git url: 'https://github.com/bbardelli/cei-aws.git', branch: 'main'
+          }
+          stage('Build docker image') {
+            sh 'cd exam-server'
+            sh 'podman build -t $IMAGE_REPO/$IMAGE_NAME:$BUILD_NUMBER -t $IMAGE_REPO/$IMAGE_NAME:latest ./'
+          }
+          stage('Push docker image') {
+            withCredentials([usernameColonPassword(credentialsId: 'registry', variable: 'USERPASS')]){
+              sh 'podman push $IMAGE_REPO/$IMAGE_NAME:$BUILD_NUMBER --tls-verify=false --creds=$USERPASS'
+              sh 'podman push $IMAGE_REPO/$IMAGE_NAME:latest --tls-verify=false --creds=$USERPASS'
             }
+          }
         }
-        stage('Test'){
-            steps {
-                 echo 'Empty'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                script{
-                        docker.withRegistry('https://885903886121.dkr.ecr.eu-south-2.amazonaws.com', 'ecr:eu-south-2:aws-credentials') {
-                            app.push("${env.BUILD_NUMBER}")
-                            app.push("latest")
-                        }
-                }
-            }
-        }
-    }
+      }
 }
