@@ -25,10 +25,8 @@ podTemplate(
             sh 'podman build -t $IMAGE_REPO/$IMAGE_NAME:$BUILD_NUMBER -t $IMAGE_REPO/$IMAGE_NAME:latest ./exam-server/'
           }
           stage('Push docker image') {
-            withCredentials([usernameColonPassword(credentialsId: 'registry', variable: 'USERPASS')]){
               sh 'podman push $IMAGE_REPO/$IMAGE_NAME:$BUILD_NUMBER --authfile=/tmp/dr/.dockerconfigjson'
               sh 'podman push $IMAGE_REPO/$IMAGE_NAME:latest --authfile=/tmp/dr/.dockerconfigjson'
-            }
           }
         }
       }
