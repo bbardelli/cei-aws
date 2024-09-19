@@ -13,8 +13,7 @@ podTemplate(
             git url: 'https://github.com/bbardelli/cei-aws.git', branch: 'main'
           }
           stage('Build docker image') {
-            sh 'cd exam-server'
-            sh 'podman build -t $IMAGE_REPO/$IMAGE_NAME:$BUILD_NUMBER -t $IMAGE_REPO/$IMAGE_NAME:latest ./'
+            sh 'podman build -t $IMAGE_REPO/$IMAGE_NAME:$BUILD_NUMBER -t $IMAGE_REPO/$IMAGE_NAME:latest ./exam-server/'
           }
           stage('Push docker image') {
             withCredentials([usernameColonPassword(credentialsId: 'registry', variable: 'USERPASS')]){
