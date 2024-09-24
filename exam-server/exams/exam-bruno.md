@@ -128,74 +128,128 @@
     Correct Answer: BE
 
     </details>
-11. N/A
-    - A. N/A
-    <details markdown=1><summary markdown="span">Answer</summary>
+11. ¿Cuál de los siguientes servicios de AWS se utiliza para gestionar las credenciales de acceso a los recursos?
 
+    - A. AWS IAM
+    - B. AWS S3
+    - C. AWS CloudFormation
+    - D. AWS Route 53
+    
+    <details markdown=1><summary markdown="span">Answer</summary>
+    
     Correct Answer: A
 
     </details>
-12. N/A
-    - A. N/A
-    <details markdown=1><summary markdown="span">Answer</summary>
+12. ¿Qué significa el término "autoescalado" en el contexto de AWS?
 
+    - A. Crear instancias automáticamente en múltiples regiones.
+    - B. Ajustar automáticamente el número de instancias EC2 según la demanda.
+    - C. Escalar la base de datos RDS automáticamente.
+    - D. Migrar datos entre instancias automáticamente.
+    
+    <details markdown=1><summary markdown="span">Answer</summary>
+    
+    Correct Answer: B
+
+    </details>
+13. ¿Cuál de los siguientes es un servicio de mensajería gestionado en AWS?
+
+    - A. SNS
+    - B. EC2
+    - C. DynamoDB
+    - D. Elastic Beanstalk
+    
+    <details markdown=1><summary markdown="span">Answer</summary>
+    
     Correct Answer: A
 
     </details>
-13. N/A
-    - A. N/A
-    <details markdown=1><summary markdown="span">Answer</summary>
 
-    Correct Answer: A
+14. ¿Qué característica define a una instancia "spot" en EC2?
+
+    - A. Precio fijo y capacidad reservada.
+    - B. Precio variable y la posibilidad de ser interrumpida por AWS.
+    - C. Almacenamiento persistente en discos locales.
+    - D. Uso garantizado durante todo el año.
+    
+    <details markdown=1><summary markdown="span">Answer</summary>
+    
+    Correct Answer: B
 
     </details>
-14. N/A
-    - A. N/A
-    <details markdown=1><summary markdown="span">Answer</summary>
 
-    Correct Answer: A
+15. ¿Para qué se utiliza el servicio AWS CloudTrail?
+
+    - A. Para monitorear logs de red.
+    - B. Para auditar y rastrear acciones realizadas en la cuenta de AWS.
+    - C. Para generar alertas en tiempo real.
+    - D. Para hacer copias de seguridad automáticas.
+    
+    <details markdown=1><summary markdown="span">Answer</summary>
+    
+    Correct Answer: B
 
     </details>
-15. N/A
-    - A. N/A
-    <details markdown=1><summary markdown="span">Answer</summary>
+16. ¿Cuál de las siguientes afirmaciones sobre Elastic Load Balancer (ELB) es correcta?
 
-    Correct Answer: A
+    - A. Distribuye tráfico entre varias instancias en diferentes regiones.
+    - B. Distribuye tráfico entre instancias en una única zona de disponibilidad.
+    - C. Se utiliza para distribuir tráfico entre instancias EC2 y bases de datos.
+    - D. Distribuye tráfico entre varias instancias en una o más zonas de disponibilidad.
+    <details markdown=1><summary markdown="span">Answer</summary>
+    
+    Correct Answer: D
 
     </details>
-16. N/A
-    - A. N/A
-    <details markdown=1><summary markdown="span">Answer</summary>
+17. ¿Cuál es la principal función del servicio AWS CloudFormation?
 
-    Correct Answer: A
+    - A. Gestionar redes en la nube.
+    - B. Proporcionar infraestructura como código para automatizar la creación de recursos.
+    - C. Hacer copias de seguridad de datos en la nube.
+    - D. Auditar y rastrear cambios en los recursos.
+    
+    <details markdown=1><summary markdown="span">Answer</summary>
+    
+    Correct Answer: B
 
     </details>
-17. N/A
-    - A. N/A
-    <details markdown=1><summary markdown="span">Answer</summary>
 
-    Correct Answer: A
+18. ¿Qué función cumple AWS VPC?
+
+    - A. Proporciona una base de datos escalable.
+    - B. Crea una red privada en la nube para aislar recursos.
+    - C. Almacena objetos en la nube.
+    - D. Gestiona usuarios y permisos.
+    
+    <details markdown=1><summary markdown="span">Answer</summary>
+    
+    Correct Answer: B
 
     </details>
-18. N/A
-    - A. N/A
-    <details markdown=1><summary markdown="span">Answer</summary>
 
-    Correct Answer: A
+19. ¿Cuál de las siguientes opciones describe una ventaja de AWS Lambda?
+
+    - A. Necesita ser configurada con instancias EC2.
+    - B. Permite ejecutar código sin aprovisionar ni administrar servidores.
+    - C. Requiere el uso de contenedores Docker.
+    - D. Funciona solo con bases de datos NoSQL.
+    
+    <details markdown=1><summary markdown="span">Answer</summary>
+    
+    Correct Answer: B
 
     </details>
-19. N/A
-    - A. N/A
+
+20. ¿Qué tipo de servicio es Amazon RDS?
+
+    - A. Almacenamiento de objetos.
+    - B. Servicio de bases de datos relacionales administradas.
+    - C. Servicio de mensajería en la nube.
+    - D. Servicio de monitoreo de aplicaciones.
+    
     <details markdown=1><summary markdown="span">Answer</summary>
-
-    Correct Answer: A
-
-    </details>
-20. N/A
-    - A. N/A
-    <details markdown=1><summary markdown="span">Answer</summary>
-
-    Correct Answer: A
+    
+    Correct Answer: B
 
     </details>
 21. N/A
