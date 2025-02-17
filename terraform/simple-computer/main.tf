@@ -94,7 +94,7 @@ resource "aws_instance" "simple-computer" {
                 # Run the server (may need sudo to bind to port 80)
                 sudo python3 hello_world.py
               EOFILE
-  security_groups             = [aws_security_group.ingress-test.id]
+  security_groups             = [aws_security_group.ingress-test.name]
   subnet_id                   = data.aws_subnets.default.ids[0]
   tags = {
     name = "simple-computer"
