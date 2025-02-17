@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "eu-south-2"
+  region = "us-east-1"
 }
 
 #get latest ami id for amazon linux 2023
